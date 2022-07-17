@@ -1,0 +1,2 @@
+/usr/bin/ar qc libapue_lib.a  CMakeFiles/apue_lib.dir/home/book/apue_stu/lib/error.c.o
+/usr/bin/ranlib libapue_lib.a

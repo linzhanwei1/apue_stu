@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/mycopy_std.dir/mycopy_std.c.o  -o mycopy_std  libapue_lib.a 

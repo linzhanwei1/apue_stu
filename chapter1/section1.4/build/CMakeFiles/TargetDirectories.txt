@@ -1,0 +1,10 @@
+/home/book/apue_stu/chapter1/section1.4/build/CMakeFiles/rebuild_cache.dir
+/home/book/apue_stu/chapter1/section1.4/build/CMakeFiles/edit_cache.dir
+/home/book/apue_stu/chapter1/section1.4/build/CMakeFiles/signal.dir
+/home/book/apue_stu/chapter1/section1.4/build/CMakeFiles/myuid.dir
+/home/book/apue_stu/chapter1/section1.4/build/CMakeFiles/program.dir
+/home/book/apue_stu/chapter1/section1.4/build/CMakeFiles/myerror.dir
+/home/book/apue_stu/chapter1/section1.4/build/CMakeFiles/mycopy_std.dir
+/home/book/apue_stu/chapter1/section1.4/build/CMakeFiles/mycopy.dir
+/home/book/apue_stu/chapter1/section1.4/build/CMakeFiles/myls.dir
+/home/book/apue_stu/chapter1/section1.4/build/CMakeFiles/apue_lib.dir

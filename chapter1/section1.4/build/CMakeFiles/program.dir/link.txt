@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/program.dir/program.c.o  -o program  libapue_lib.a 
