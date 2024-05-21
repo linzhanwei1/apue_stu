@@ -1,1 +1,0 @@
-/usr/bin/cc   -rdynamic CMakeFiles/myerror.dir/myerror.c.o  -o myerror  libapue_lib.a 

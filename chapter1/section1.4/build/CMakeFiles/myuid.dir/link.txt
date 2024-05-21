@@ -1,1 +1,0 @@
-/usr/bin/cc   -rdynamic CMakeFiles/myuid.dir/myuid.c.o  -o myuid  libapue_lib.a 
