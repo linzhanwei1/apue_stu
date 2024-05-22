@@ -1,0 +1,7 @@
+CFLAGS+=-D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE -Wall
+
+all:
+
+.PHONY:clean
+clean:
+	rm -rf *.o a.out

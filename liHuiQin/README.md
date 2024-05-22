@@ -51,5 +51,14 @@ strace ./ab
 - 使用glob函数解析目录内容
 ## p150
 - 使用目录相关函数完成目录解析
-## p153
-- /etc/passwd
+## p155
+- shadow文件内容$algorithm$salt$digest$
+  - getspnam();
+  - crypt();
+## p156
+- 时间戳:time_t char * struct tm
+  - time();
+  - gmtime();
+  - localtime();
+  - mktime();
+  - strftime();
