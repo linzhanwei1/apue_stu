@@ -7,8 +7,11 @@
 #include <syslog.h>
 #include <errno.h>
 #include <string.h>
+#include <signal.h>
 
 #define FNAME "/tmp/out"
+
+static FILE *fp;
 
 int daemonize(void)
 {
@@ -43,9 +46,31 @@ int daemonize(void)
     return 0;
 }
 
+static void daemon_exit(int s)
+{
+    fclose(fp);
+    closelog();
+    exit(0);
+}
+
 int main(int argc, char *argv[])
 {
-    FILE *fp;
+    struct sigaction sa;
+
+    sa.sa_handler = daemon_exit;
+    sigemptyset(&sa.sa_mask);
+    sigaddset(&sa.sa_mask, SIGINT);
+    sigaddset(&sa.sa_mask, SIGQUIT);
+    sigaddset(&sa.sa_mask, SIGTERM);
+    sa.sa_flags = 0;
+
+    sigaction(SIGINT, &sa, NULL);
+    sigaction(SIGQUIT, &sa, NULL);
+    sigaction(SIGTERM, &sa, NULL);
+
+    // signal(SIGINT, daemon_exit);
+    // signal(SIGQUIT, daemon_exit);
+    // signal(SIGTERM, daemon_exit);
 
     openlog("myDaemon", LOG_PID, LOG_DAEMON);
 
@@ -76,7 +101,5 @@ int main(int argc, char *argv[])
         sleep(1);
     }
 
-    fclose(fp);
-    closelog();
     exit(0);
 }
