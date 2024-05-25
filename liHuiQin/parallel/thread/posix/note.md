@@ -186,6 +186,8 @@
     - int pthread_sigmask(int how, const sigset_t *set, sigset_t *oldset);
     - int sigwait(const sigset_t *set, int *sig);
     - int pthread_kill(pthread_t thread, int sig);
+  - 线程与fork
+    - 
 
 
 - 动态模块的单次初始化
