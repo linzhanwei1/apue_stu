@@ -112,3 +112,9 @@
 - 信号从收到到响应有一个不可避免地延迟
 - mask & pending
 - 标准信号地响应没有严格地顺序
+
+## 延时函数
+- unsigned int sleep(unsigned int seconds);     单位秒，无移植性
+- int usleep(useconds_t usec);  单位微秒
+- select(0, NULL, NULL, NULL, &delay); 单位微妙
+- int nanosleep(const struct timespec *rqtp, struct timespec *rmtp); 单位纳秒

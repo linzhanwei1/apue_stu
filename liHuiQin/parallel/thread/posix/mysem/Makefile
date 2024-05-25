@@ -1,10 +1,10 @@
 LDFLAGS+=-pthread
 
-all:mytbf
+all:mysem
 
-mytbf:main.o mytbf.o
+mysem:main.o mysem.o
 	gcc $^ -o $@ ${LDFLAGS}
 
 .PHONY:clean
 clean:
-	rm -rf *.o mytbf
+	rm -rf *.o mysem

@@ -57,6 +57,60 @@
        int pthread_mutex_unlock(pthread_mutex_t *mutex);</td>
     <td>pthread_mutex_lock, pthread_mutex_trylock, pthread_mutex_unlock — lock and unlock a mutex</td>
   </tr>
+  <tr>
+    <td>int pthread_once(pthread_once_t *once_control, void (*init_routine)(void));<br>
+       pthread_once_t once_control = PTHREAD_ONCE_INIT;</td>
+    <td>pthread_once — dynamic package initialization</td>
+  </tr>
+  <tr>
+    <td>int pthread_cond_destroy(pthread_cond_t *cond);<br>
+       int pthread_cond_init(pthread_cond_t *restrict cond,
+              const pthread_condattr_t *restrict attr);<br>
+       pthread_cond_t cond = PTHREAD_COND_INITIALIZER;</td>
+    <td>pthread_cond_destroy, pthread_cond_init - destroy and initialize condition variables</td>
+  </tr>
+  <tr>
+    <td>int pthread_cond_broadcast(pthread_cond_t *cond);<br>
+       int pthread_cond_signal(pthread_cond_t *cond);</td>
+    <td>pthread_cond_broadcast, pthread_cond_signal - broadcast or signal a condition</td>
+  </tr>
+  <tr>
+    <td>int pthread_cond_timedwait(pthread_cond_t *restrict cond,
+              pthread_mutex_t *restrict mutex,
+              const struct timespec *restrict abstime);<br>
+       int pthread_cond_wait(pthread_cond_t *restrict cond,
+              pthread_mutex_t *restrict mutex);</td>
+    <td>pthread_cond_timedwait, pthread_cond_wait - wait on a condition</td>
+  </tr>
+  <tr>
+    <td>int pthread_attr_init(pthread_attr_t *attr);<br>
+       int pthread_attr_destroy(pthread_attr_t *attr);</td>
+    <td>pthread_attr_init, pthread_attr_destroy - initialize and destroy thread attributes object</td>
+  </tr>
+  <tr>
+    <td>int pthread_mutexattr_destroy(pthread_mutexattr_t *attr);<br>
+       int pthread_mutexattr_init(pthread_mutexattr_t *attr);</td>
+    <td>pthread_mutexattr_destroy, pthread_mutexattr_init - destroy and initialize the mutex attributes object</td>
+  </tr>
+  <tr>
+    <td>int pthread_mutexattr_getpshared(const pthread_mutexattr_t *
+          restrict attr, int *restrict pshared);<br>
+       int pthread_mutexattr_setpshared(pthread_mutexattr_t *attr,
+          int pshared);</td>
+    <td>pthread_mutexattr_getpshared, pthread_mutexattr_setpshared - get and set the process-shared attribute</td>
+  </tr>
+  <tr>
+    <td>int pthread_mutexattr_gettype(const pthread_mutexattr_t *restrict attr, int *restrict type);<br>
+       int pthread_mutexattr_settype(pthread_mutexattr_t *attr, int type);
+    </td>
+    <td>pthread_mutexattr_getpshared, pthread_mutexattr_setpshared - get and set the process-shared attribute</td>
+  </tr>
+  <tr>
+    <td>int pthread_condattr_destroy(pthread_condattr_t *attr);<br>
+       int pthread_condattr_init(pthread_condattr_t *attr);
+    </td>
+    <td>pthread_condattr_destroy, pthread_condattr_init - destroy and initialize the condition variable attributes object</td>
+  </tr>
 
 </table>
 
@@ -84,3 +138,55 @@
     - int pthread_mutex_lock(pthread_mutex_t *mutex);
     - int pthread_mutex_trylock(pthread_mutex_t *mutex);
     - int pthread_mutex_unlock(pthread_mutex_t *mutex);
+  - 条件变量(通知法，改善忙等的消耗的特性):
+    - pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+    - int pthread_cond_init(pthread_cond_t *restrict cond, const pthread_condattr_t *restrict attr);
+    - int pthread_cond_destroy(pthread_cond_t *cond);
+    - int pthread_cond_broadcast(pthread_cond_t *cond);
+    - int pthread_cond_signal(pthread_cond_t *cond);
+    - int pthread_cond_timedwait(pthread_cond_t *restrict cond, pthread_mutex_t *restrict mutex, const struct timespec *restrict abstime);
+    - int pthread_cond_wait(pthread_cond_t *restrict cond, pthread_mutex_t *restrict mutex);  
+  - 信号量:
+  - 读写锁(避免写者饿死):
+    - 读锁(共享锁)
+    - 写锁(互斥锁)
+  - 线程属性:
+    - int pthread_attr_init(pthread_attr_t *attr);
+    - int pthread_attr_destroy(pthread_attr_t *attr);
+    - pthread_attr_setaffinity_np(3);
+    - pthread_attr_setdetachstate(3);
+    - pthread_attr_setguardsize(3);
+    - pthread_attr_setinheritsched(3);
+    - pthread_attr_setschedparam(3);
+    - pthread_attr_setschedpolicy(3);
+    - pthread_attr_setscope(3);
+    - pthread_attr_setstack(3);
+    - pthread_attr_setstackaddr(3);
+    - pthread_attr_setstacksize(3);
+    - pthread_getattr_np(3)
+  - 线程同步的属性
+    - 互斥量属性
+      - int pthread_mutexattr_destroy(pthread_mutexattr_t *attr);
+      - int pthread_mutexattr_init(pthread_mutexattr_t *attr);
+      - int pthread_mutexattr_getpshared(const pthread_mutexattr_t *
+              restrict attr, int *restrict pshared);
+      - int pthread_mutexattr_setpshared(pthread_mutexattr_t *attr,
+              int pshared);
+      - clone(); 使用系统调用时，互斥量是否跨进程起作用，以上2个API
+      - int pthread_mutexattr_gettype(const pthread_mutexattr_t *restrict attr,
+              int *restrict type);
+      - int pthread_mutexattr_settype(pthread_mutexattr_t *attr, int type);
+  - 条件变量属性
+    - int pthread_condattr_destroy(pthread_condattr_t *attr);
+    - int pthread_condattr_init(pthread_condattr_t *attr);
+  - 读写锁属性
+- 重入(线程安全):
+  - 多线程种的io
+  - 线程与信号
+    - int pthread_sigmask(int how, const sigset_t *set, sigset_t *oldset);
+    - int sigwait(const sigset_t *set, int *sig);
+    - int pthread_kill(pthread_t thread, int sig);
+
+
+- 动态模块的单次初始化
+  - int pthread_once(pthread_once_t *once_control, void (*init_routine)(void));
