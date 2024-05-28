@@ -3,7 +3,14 @@
         "ourhdr.h": "c",
         "unistd.h": "c",
         "stat.h": "c",
-        "dirent.h": "c"
+        "dirent.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c",
+        "types.h": "c",
+        "proto.h": "c",
+        "shm.h": "c"
     },
     "cmake.configureOnOpen": false
 }
