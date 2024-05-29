@@ -10,7 +10,10 @@
         "utility": "c",
         "types.h": "c",
         "proto.h": "c",
-        "shm.h": "c"
+        "shm.h": "c",
+        "in.h": "c",
+        "mman.h": "c",
+        "signal.h": "c"
     },
     "cmake.configureOnOpen": false
 }
